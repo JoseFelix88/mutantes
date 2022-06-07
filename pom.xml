@@ -31,11 +31,11 @@
 	<modules>
 		<module>dto</module>
 		<module>model</module>
-		<module>domine</module>
+<!-- 		<module>domine</module> -->
 		<module>repository</module>
 		<module>service-api</module>
 		<module>service-impl</module>
-		<module>integration</module>
+<!-- 		<module>integration</module> -->
 		<module>application-mutante</module>
 	</modules>
 </project>

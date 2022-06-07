@@ -38,20 +38,6 @@
 		
 		<dependency>
 			<groupId>com.meli.mutante</groupId>
-			<artifactId>mutante-integration</artifactId>
-			<version>${project.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.meli.mutante</groupId>
-			<artifactId>mutante-domine</artifactId>
-			<version>${project.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.meli.mutante</groupId>
 			<artifactId>mutante-service-api</artifactId>
 			<version>${project.version}</version>
 			<scope>compile</scope>
