@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+<!-- 	<parent> -->
+<!-- 		<groupId>com.meli.mutante</groupId> -->
+<!-- 		<artifactId>super-pom</artifactId> -->
+<!-- 		<version>03.01.01</version> -->
+<!-- 	</parent> -->
+
+	<groupId>com.meli.mutante</groupId>
+	<artifactId>mutante</artifactId>
+	<version>01.00.00-SNAPSHOT</version>
+
+	<packaging>pom</packaging>
+
+	<name>mutante</name>
+	<description>Aplicación donde se gestiona la publicación del mutante.</description>
+
+	<properties>
+
+		<!-- Identificador de la aplicacion y el componente (CIs) -->
+		<application.name>mutante</application.name>
+		<component.name>mutante</component.name>
+
+		<archetype.version>03.01.01</archetype.version>
+	</properties>
+
+	<modules>
+		<module>dto</module>
+		<module>model</module>
+		<module>domine</module>
+		<module>repository</module>
+		<module>service-api</module>
+		<module>service-impl</module>
+		<module>integration</module>
+		<module>application-mutante</module>
+	</modules>
+</project>
