@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.5.4</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	
+	<groupId>com.meli.mutante</groupId>
+	<artifactId>mutante-integration</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	
+	<packaging>jar</packaging>
+	
+	<name>integration</name>
+	<description>Módulo integración proyecto  mutante</description>
+	
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+	
+	<dependencies>
+	
+		<!-- // tag::frameworkOtherModuleDependencies[] -->
+		<dependency>
+			<groupId>com.meli.mutante</groupId>
+			<artifactId>mutante-dto</artifactId>
+			<version>${project.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- // end::frameworkOtherModuleDependencies[] -->
+
+		<!-- tag::clientMail[] -->
+		<!-- Sistema de correo electrónico (mail) -->
+
+		<!-- Construcción del mensaje de correo -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<scope>compile</scope>
+			<version>${javax-mail.version}</version>
+		</dependency>
+		<!-- Configuración del contexto de Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<!-- Servicio de envío de correos de Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<!-- end::clientMail[] -->
+
+		<!-- tag::clientJMS[] -->
+		<!-- Sistema de mensajería Java (JMS) -->
+
+		<!-- API JMS utilizado en los fuentes -->
+		<dependency>
+			<groupId>javax.jms</groupId>
+			<artifactId>javax.jms-api</artifactId>
+			<scope>compile</scope>
+			<version>2.0.1</version>
+		</dependency>
+		<!-- Utilizado por el servicio de envío de mensajes JMS -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<!-- Permite incluir la funcionalidad de traceo de peticiones -->
+		<dependency>
+			<groupId>io.tracee.binding</groupId>
+			<artifactId>tracee-jms</artifactId>
+			<scope>compile</scope>
+			<version>1.2.0</version>
+		</dependency>
+		<!-- API del sistema de logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<!-- end::clientJMS[] -->
+
+		<!-- tag::clientSOAP[] -->
+		<!-- Clientes de servicios web SOAP -->
+
+		<!-- Utilizado en fuentes por las "feature" e "interceptor" -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-core</artifactId>
+			<scope>compile</scope>
+			<version>3.4.4</version>
+		</dependency>
+		<!-- Contiene la utilidad JaxWsProxyFactoryBean para crear clientes -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<scope>compile</scope>
+			<version>3.4.4</version>
+		</dependency>
+		<!-- Permite personalizar la petición HTTP mediante Conduit -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<scope>compile</scope>
+			<version>3.4.4</version>
+		</dependency>
+		<!-- end::clientSOAP[] -->
+
+		<!-- tag::clientSOAPTrace[] -->
+		<!-- Trazabilidad de las peticiones de clientes de servicios web SOAP -->
+		<dependency>
+			<groupId>io.tracee.binding</groupId>
+			<artifactId>tracee-cxf</artifactId>
+			<scope>compile</scope>
+			<version>1.2.0</version>
+		</dependency>
+		<!-- end::clientSOAPTrace[] -->
+
+		<!-- tag::clientREST[] -->
+		<!-- Clientes de servicios web REST -->
+
+		<!-- Utilidades para peticiones REST como RestTemplate -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<!-- Utilidades de configuración (como RestTemplateBuilder) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<!-- end::clientREST[] -->
+
+		<!-- tag::clientRESTHttps[] -->
+		<!-- Permitir conexiones REST con SSL (https) -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<!-- end::clientRESTHttps[] -->
+
+		<!-- tag::clientRESTTrace[] -->
+		<!-- Trazabilidad de las peticiones de clientes de servicios web REST -->
+		<dependency>
+			<groupId>io.tracee.binding</groupId>
+			<artifactId>tracee-springhttpclient</artifactId>
+			<scope>compile</scope>
+			<version>1.2.0</version>
+		</dependency>
+		<!-- end::clientRESTTrace[] -->
+	
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- Generar artefactos Java de integraciones con servicios web SOAP -->
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-codegen-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generate-sources</id>
+						<configuration>
+							<wsdlOptions>
+								<!-- Contratos (WSDLs) de los servicios 
+								<wsdlOption>
+									<wsdl>src/main/resources/wsdl/folder-contrato/name-contract.wsdl</wsdl>
+								</wsdlOption>-->
+							</wsdlOptions>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
