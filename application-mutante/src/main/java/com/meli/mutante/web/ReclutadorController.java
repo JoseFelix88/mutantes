@@ -18,8 +18,7 @@ public class ReclutadorController {
 	
 	
 	@PostMapping(value = "/mutant")
-	public ResponseEntity<?> isMutant(@RequestBody DnaSequenceDto dnaDto) {
-		
+	public ResponseEntity<?> isMutant(@RequestBody DnaSequenceDto dnaDto) throws Exception {
 		boolean isMutant = rService.isMutant(dnaDto);
 		if (isMutant) {
 			return ResponseEntity.ok().build();

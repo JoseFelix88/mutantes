@@ -38,7 +38,7 @@ public class MutanteProcessorTest {
 
 	@Test
 	public void testCheckConsistencia() throws Exception {
-		List<String> listDna = Arrays.asList("ATGCGA", "CAGzGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG");
+		List<String> listDna = Arrays.asList("ATGCGA", "ATGCGA", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG");
 		Pattern baseNitrogenada = Pattern.compile("[atcg]+", Pattern.CASE_INSENSITIVE);
 
 		for (String dna : listDna) {

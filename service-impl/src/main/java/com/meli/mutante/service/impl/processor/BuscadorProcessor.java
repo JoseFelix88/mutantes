@@ -33,13 +33,15 @@ public class BuscadorProcessor {
 	
 
 	public boolean existMutante() {
+		boolean existeDnaMutante = false;
 		for (BuscadorMutante mutante : itemsToProcess) {
 			mutante.buscarDnaMutante();
-			if (mutante.existeDnaMutante())
+			existeDnaMutante = mutante.existeDnaMutante();
+			if (existeDnaMutante)
 				break;
 		}
 
-		return reclutador.getFound() >= reclutador.getCountSecuenceFind();
+		return existeDnaMutante;
 	}
 	
 	

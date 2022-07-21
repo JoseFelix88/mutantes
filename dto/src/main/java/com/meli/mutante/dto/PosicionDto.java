@@ -1,17 +1,17 @@
 package com.meli.mutante.dto;
 
-public class GpsDto {
+public class PosicionDto {
 
-	char dna[][];
-	int indiceBajo;
-	int fila;
-	int columna;
-	char ultimoLiteral;
-	char actualLiteral;
-	int indiceSeguro;
-	int tamanio;
+	public char dna[][];
+	public int indiceBajo;
+	public int fila;
+	public int columna;
+	public char ultimoLiteral;
+	public char actualLiteral;
+	public int indiceSeguro;
+	public int tamanio;
 
-	public GpsDto(char[][] dna, int indiceBajo, int fila, int columna) {
+	public PosicionDto(char[][] dna, int indiceBajo, int fila, int columna) {
 		super();
 		this.dna = dna;
 		this.indiceSeguro = dna.length - 1;
@@ -22,12 +22,12 @@ public class GpsDto {
 		this.ultimoLiteral = dna[fila][columna];
 	}
 
-	public static GpsDto in(char[][] dna, int fila, int columna, int indice) {
-		return new GpsDto(dna, indice, fila, columna);
+	public static PosicionDto in(char[][] dna, int fila, int columna, int indice) {
+		return new PosicionDto(dna, indice, fila, columna);
 	}
 
-	public static GpsDto in(char[][] dna, int fila, int columna) {
-		return new GpsDto(dna, 0, fila, columna);
+	public static PosicionDto in(char[][] dna, int fila, int columna) {
+		return new PosicionDto(dna, 0, fila, columna);
 	}
 
 	public char[][] getDna() {

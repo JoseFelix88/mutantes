@@ -4,6 +4,6 @@ import com.meli.mutante.dto.DnaSequenceDto;
 
 public interface ReclutadorService {
 
-	public boolean isMutant(DnaSequenceDto dnaDto);
+	public boolean isMutant(DnaSequenceDto dnaDto) throws Exception;
 	
 }

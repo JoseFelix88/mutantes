@@ -3,7 +3,7 @@ package com.meli.mutante.service.impl.buscador;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.meli.mutante.dto.GpsDto;
+import com.meli.mutante.dto.PosicionDto;
 import com.meli.mutante.dto.ReclutadorDto;
 
 public abstract class BuscadorMutante {
@@ -17,7 +17,7 @@ public abstract class BuscadorMutante {
 		this.reclutador = reclutador;
 	}
 
-	public boolean search(GpsDto gps) {
+	public boolean search(PosicionDto gps) {
 		log.info("********* Buscando mutantes... *********");
 		char literalActual = gps.getDna()[gps.getFila()][gps.getColumna()];
 		int index = 1;
@@ -43,12 +43,12 @@ public abstract class BuscadorMutante {
 	}
 
 	protected void siguienteDnaFound() {
-		reclutador.setFound(reclutador.getFound() + 1);
+		reclutador.setFound(reclutador.getCountSecuenceFind() + 1);
 	}
 
-	protected abstract void siguiente(GpsDto gps);
+	protected abstract void siguiente(PosicionDto gps);
 
-	protected abstract boolean existeSiguiente(GpsDto gps);
+	protected abstract boolean existeSiguiente(PosicionDto gps);
 	
 	public abstract void buscarDnaMutante();
 
