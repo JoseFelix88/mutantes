@@ -10,6 +10,7 @@ public class PosicionDto {
 	public char actualLiteral;
 	public int indiceSeguro;
 	public int tamanio;
+	public int secuencia;
 
 	public PosicionDto(char[][] dna, int indiceBajo, int fila, int columna) {
 		super();

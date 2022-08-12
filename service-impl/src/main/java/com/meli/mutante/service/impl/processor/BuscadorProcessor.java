@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.meli.mutante.dto.ReclutadorDto;
+import com.meli.mutante.service.impl.buscador.BuscadorDiagonal;
 import com.meli.mutante.service.impl.buscador.BuscadorHorizontal;
 import com.meli.mutante.service.impl.buscador.BuscadorMutante;
 import com.meli.mutante.service.impl.buscador.BuscadorVertical;
@@ -26,8 +27,12 @@ public class BuscadorProcessor {
 	private void cargarBuscador() {
 		BuscadorMutante horizontal = new BuscadorHorizontal(reclutador);
 		BuscadorMutante vertical = new BuscadorVertical(reclutador);
+		BuscadorMutante diagonal = new BuscadorDiagonal(reclutador);
+		
 		addItems(horizontal);
 		addItems(vertical);
+		addItems(diagonal);
+		
 	}
 
 	private void addItems(BuscadorMutante buscadorMutante) {

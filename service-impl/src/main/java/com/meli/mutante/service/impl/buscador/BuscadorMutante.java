@@ -2,6 +2,7 @@ package com.meli.mutante.service.impl.buscador;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.ObjectUtils;
 
 import com.meli.mutante.dto.PosicionDto;
 import com.meli.mutante.dto.ReclutadorDto;
@@ -17,19 +18,19 @@ public abstract class BuscadorMutante {
 		this.reclutador = reclutador;
 	}
 
-	public boolean search(PosicionDto gps) {
+	public boolean search(PosicionDto posicion) {
 		log.info("********* Buscando mutantes... *********");
-		char literalActual = gps.getDna()[gps.getFila()][gps.getColumna()];
-		int index = 1;
+		char literalActual = posicion.getDna()[posicion.getFila()][posicion.getColumna()];
+		posicion.secuencia = 1;
 		boolean existeDnaMutante = false;
-		while (existeSiguiente(gps)) {
-			siguiente(gps);
-			if (literalActual != gps.getActualLiteral()) {
-				index = 1;
-				literalActual = gps.getActualLiteral();
-			} else if (++index >= reclutador.getFoundSecuence()) {
+		while (existeSiguiente(posicion)) {
+			siguiente(posicion);
+			if (literalActual != posicion.getActualLiteral()) {
+				posicion.secuencia = 1;
+				literalActual = posicion.getActualLiteral();
+			} else if (++posicion.secuencia >= reclutador.getFoundSecuence()) {
 				this.siguienteDnaFound();
-					log.info("********* Mutante {} encontrado *********", index);
+					log.info("********* Mutante {} encontrado *********", posicion.secuencia);
 				existeDnaMutante = existeDnaMutante();
 				return existeDnaMutante;
 			}
@@ -39,7 +40,9 @@ public abstract class BuscadorMutante {
 	}
 
 	public boolean existeDnaMutante() {
-		return reclutador.getFound() >= reclutador.getCountSecuenceFind();
+		Integer found = !ObjectUtils.isEmpty(reclutador.getFound()) ? reclutador.getFound()
+				: reclutador.getFoundSecuence();
+		return found >= reclutador.getCountSecuenceFind();
 	}
 
 	protected void siguienteDnaFound() {
